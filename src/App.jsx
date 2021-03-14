@@ -1,44 +1,110 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import Header from './components/layouts/Header'
+import Navbar from './components/layouts/Navigationbar'
+import Footer from './components/layouts/Footer'
+import News from './components/News'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [isLoading, setLoadingState] = useState(true)
+
+  const showLoader = () => {
+    setLoadingState(true)
+  }
+  const hideLoader = () => {
+    setLoadingState(false)
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Header showLoader={showLoader} />
+      <Navbar showLoader={showLoader} />
+      <Switch>
+        <>
+          <Route
+            exact
+            key="home"
+            path="/"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+          <Route
+            key="shows"
+            path="/shows"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+          <Route
+            key="ask"
+            path="/ask"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+          <Route
+            key="jobs"
+            path="/jobs"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+
+          <Route
+            key="top"
+            path="/top"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+          <Route
+            key="new"
+            path="/new"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+          <Route
+            key="best"
+            path="/best"
+            render={() => (
+              <News
+                isLoading={isLoading}
+                hideLoader={hideLoader}
+                showLoader={showLoader}
+              />
+            )}
+          />
+        </>
+      </Switch>
+      <Footer />
+    </Router>
   )
 }
 
