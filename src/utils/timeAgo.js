@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable consistent-return */
 export default function timeAgo(data) {
   const formatter = new Intl.RelativeTimeFormat('id', {
     numeric: 'auto',
