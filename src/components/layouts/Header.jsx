@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ const Header = ({ showLoader }) => (
         style={{ color: '#fff', textDecoration: 'none' }}
         onClick={showLoader}
       >
-        <i className="fab fa-hacker-news-square"></i> Hacker News
+        <i className="fab fa-hacker-news-square" /> Hacker News
       </Link>
     </Navbar.Brand>
 
@@ -27,5 +28,9 @@ const Header = ({ showLoader }) => (
     </Nav>
   </Navbar>
 )
+
+Header.propTypes = {
+  showLoader: PropTypes.bool.isRequired,
+}
 
 export default Header

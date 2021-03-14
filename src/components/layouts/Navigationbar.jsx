@@ -1,6 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Dropdown, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+
+const dropDownMenuStyle = {
+  boxShadow: ' 0px 2px 15px -7px rgba(0, 0, 0, 0.75)',
+}
+
+const linkStyle = {
+  textDecoration: 'none',
+  color: '#000',
+  cursor: 'pointer',
+  marginRight: '10px',
+  padding: '5px',
+  paddingLeft: '20px',
+  paddingRight: '20px',
+  boxShadow: '0px 2px 10px -7px rgba(0, 0, 0, 0.75)',
+  borderRadius: '20px',
+  transition: ' all 0.5s',
+  background: '#fff',
+}
 
 const Navigationbar = ({ showLoader }) => (
   <Navbar style={{ background: '#e8e8e8' }}>
@@ -59,21 +78,8 @@ const Navigationbar = ({ showLoader }) => (
   </Navbar>
 )
 
-const linkStyle = {
-  textDecoration: 'none',
-  color: '#000',
-  cursor: 'pointer',
-  marginRight: '10px',
-  padding: '5px',
-  paddingLeft: '20px',
-  paddingRight: '20px',
-  boxShadow: '0px 2px 10px -7px rgba(0, 0, 0, 0.75)',
-  borderRadius: '20px',
-  transition: ' all 0.5s',
-  background: '#fff',
+Navigationbar.propTypes = {
+  showLoader: PropTypes.bool.isRequired,
 }
 
-const dropDownMenuStyle = {
-  boxShadow: ' 0px 2px 15px -7px rgba(0, 0, 0, 0.75)',
-}
 export default Navigationbar

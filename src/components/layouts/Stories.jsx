@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import timeAgo from '../../utils/timeAgo'
 
 const Stories = ({ state }) => (
   <>
-    {state.map(({ item, author, title, score, comments_count, time, url }) => (
+    {state.map(({ item, author, title, score, commentsCount, time, url }) => (
       <tr key={item}>
         <td style={{ padding: '0px' }}>
           <i
@@ -75,7 +76,7 @@ const Stories = ({ state }) => (
               style={{ color: '#828282' }}
               rel="noopener noreferrer"
             >
-              {comments_count}
+              {commentsCount}
             </a>
           </td>
         </React.Fragment>
@@ -83,4 +84,9 @@ const Stories = ({ state }) => (
     ))}
   </>
 )
+
+Stories.propTypes = {
+  state: PropTypes.shape.isRequired,
+}
+
 export default Stories

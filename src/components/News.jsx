@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import Stories from './layouts/Stories'
@@ -53,16 +54,6 @@ const News = (props) => {
     setState(item)
     callback()
   }
-  useEffect(() => {
-    // function executes here ,calling two async function
-    getData(checkRoute(), 0, 20).then((arr) => {
-      getDetails(arr).then((item) =>
-        formatComponent(item, () => {
-          props.hideLoader()
-        })
-      )
-    })
-  }, [])
 
   // getting all the data ids and storing them in an array
   const getData = async function (category, start, end) {
@@ -101,6 +92,17 @@ const News = (props) => {
     return results
   }
 
+  useEffect(() => {
+    // function executes here ,calling two async function
+    getData(checkRoute(), 0, 20).then((arr) => {
+      getDetails(arr).then((item) =>
+        formatComponent(item, () => {
+          props.hideLoader()
+        })
+      )
+    })
+  }, [])
+
   const showMoreContent = () => {
     setLoading(true)
     getData(checkRoute(), count, count + 20).then((arr) => {
@@ -117,6 +119,7 @@ const News = (props) => {
   // return statement
   return (
     <>
+      {/* eslint-disable-next-line react/destructuring-assignment */}
       {props.isLoading ? (
         <Loader />
       ) : (
@@ -135,7 +138,13 @@ const News = (props) => {
             </table>
           </div>
           <div className="text-center m-1">
-            <span className="more-btn " onClick={showMoreContent}>
+            <span
+              className="more-btn"
+              role="button"
+              tabIndex={0}
+              onClick={showMoreContent}
+              onKeyPress={showMoreContent}
+            >
               More
             </span>
           </div>
@@ -143,6 +152,12 @@ const News = (props) => {
       )}
     </>
   )
+}
+
+News.propTypes = {
+  location: PropTypes.shape.isRequired,
+  hideLoader: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 }
 
 export default withRouter(News)
