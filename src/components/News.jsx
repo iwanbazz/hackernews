@@ -56,7 +56,7 @@ const News = (props) => {
   }
 
   // getting all the data ids and storing them in an array
-  const getData = async function (category, start, end) {
+  const getData = async function showdata(category, start, end) {
     const arr = []
     try {
       const { data } = await axios.get(
@@ -70,7 +70,7 @@ const News = (props) => {
   }
 
   // fetching data from those ids and storing only the necessary datas in an array
-  const getDetails = async function (arr) {
+  const getDetails = async function showDetails(arr) {
     const promises = arr.map(async (item) => {
       const { data } = await axios.get(
         `https://hacker-news.firebaseio.com/v0/item/${item}.json?print=pretty`
