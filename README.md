@@ -38,7 +38,7 @@ Kindly run this command :
 make podman_run
 ```
 
-2. Start the development server :
+If it is done checking, kindly run :
 
 ```bash
 make podman_stop
