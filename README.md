@@ -1,6 +1,6 @@
 <h2 align="center">Hacker News React</h2>
 
-This is simple react apps for test on Sampingan for role Senior Frontend Engineer
+This is simple react apps HackerNews
 
 - React - UI Framework
 - Utils function native js date converter
